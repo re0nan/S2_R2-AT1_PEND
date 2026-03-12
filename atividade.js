@@ -6,6 +6,6 @@ let nome = document.getElementById("inputTarefa").value
 
 let mensagem = document.getElementById("mensagem")
 
-mensagem.textContent = "Olá " + nome + "!"
+mensagem.textContent = "Olá Seja Bem Vindo!"
 
 })
