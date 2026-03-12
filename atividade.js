@@ -1,11 +1,8 @@
-const botao = document.getElementById("btnAdicionar")
+const botao = document.getElementById("btnAdicionar");
+const mensagem = document.getElementById("mensagem");
 
 botao.addEventListener("click", function(){
 
-let nome = document.getElementById("inputTarefa").value
+    mensagem.textContent = "Texto alterado com JavaScript!";
 
-let mensagem = document.getElementById("mensagem")
-
-mensagem.textContent = "Olá Seja Bem Vindo!"
-
-})
+});
