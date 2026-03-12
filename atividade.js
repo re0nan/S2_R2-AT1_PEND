@@ -1,17 +1,30 @@
 const botao = document.getElementById("btnAdicionar");
 
-botao.addEventListener("click", function(){
+botao.addEventListener("click", function () {
 
-    const texto = document.getElementById("inputTarefa").value;
+    const input = document.getElementById("inputTarefa");
+    const texto = input.value;
 
+    const mensagem = document.getElementById("mensagem");
     const lista = document.getElementById("listaTarefas");
 
-    const li = document.createElement("li");
+    if (texto === "") {
 
-    li.classList.add("list-group-item");
+        mensagem.innerHTML = '<span class="text-danger">Tarefa vazia!</span>';
 
-    li.textContent = texto;
+    } else {
 
-    lista.appendChild(li);
+        const li = document.createElement("li");
+
+        li.classList.add("list-group-item");
+
+        li.textContent = texto;
+
+        lista.appendChild(li);
+
+        input.value = "";
+
+        mensagem.innerHTML = '<span class="text-success">Tarefa adicionada com sucesso!</span>';
+    }
 
 });
