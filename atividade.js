@@ -1,8 +1,17 @@
 const botao = document.getElementById("btnAdicionar");
-const mensagem = document.getElementById("mensagem");
 
 botao.addEventListener("click", function(){
 
-    mensagem.textContent = "Texto alterado com JavaScript!";
+    const texto = document.getElementById("inputTarefa").value;
+
+    const lista = document.getElementById("listaTarefas");
+
+    const li = document.createElement("li");
+
+    li.classList.add("list-group-item");
+
+    li.textContent = texto;
+
+    lista.appendChild(li);
 
 });
