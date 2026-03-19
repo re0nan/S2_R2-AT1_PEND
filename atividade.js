@@ -1,40 +1,36 @@
+const input = document.getElementById("inputTarefa");
 const botao = document.getElementById("btnAdicionar");
+const lista = document.getElementById("listaTarefas");
 
-botao.addEventListener("click", function () {
+botao.onclick = () => {
 
-    const input = document.getElementById("inputTarefa");
-    const texto = input.value;
+    let texto = input.value.trim();
+    if (texto === "") return;
 
-    const lista = document.getElementById("listaTarefas");
-    const mensagem = document.getElementById("mensagem");
+    let li = document.createElement("li");
+    li.className = "list-group-item";
 
-    if (texto === "") {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
-        mensagem.innerHTML = '<span class="text-danger">Tarefa vazia!</span>';
+    let span = document.createElement("span");
+    span.innerText = " " + texto;
 
-    } else {
+    checkbox.onchange = () => {
+        span.style.textDecoration = checkbox.checked ? "line-through" : "none";
+    };
 
-        const li = document.createElement("li");
-        li.classList.add("list-group-item", "d-flex", "justify-content-between");
+    let btn = document.createElement("button");
+    btn.innerText = "Remover";
+    btn.className = "btn btn-danger btn-sm float-end";
 
-        li.textContent = texto;
+    btn.onclick = () => li.remove();
 
-        const botaoRemover = document.createElement("button");
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(btn);
 
-        botaoRemover.textContent = "Remover";
-        botaoRemover.classList.add("btn", "btn-danger", "btn-sm");
+    lista.appendChild(li);
 
-        botaoRemover.addEventListener("click", function () {
-            li.remove();
-        });
-
-        li.appendChild(botaoRemover);
-
-        lista.appendChild(li);
-
-        input.value = "";
-
-        mensagem.innerHTML = '<span class="text-success">Tarefa adicionada!</span>';
-    }
-
-});
+    input.value = "";
+};
