@@ -1,40 +1,47 @@
-const botao = document.getElementById("btnAdicionar");
 
-botao.addEventListener("click", function () {
+let input = document.getElementById("inputTarefa");
+let botao = document.getElementById("btnAdicionar");
+let lista = document.getElementById("listaTarefas");
+let mensagem = document.getElementById("mensagem");
 
-    const input = document.getElementById("inputTarefa");
-    const texto = input.value;
 
-    const lista = document.getElementById("listaTarefas");
-    const mensagem = document.getElementById("mensagem");
+botao.addEventListener("click", () => {
 
+    let texto = input.value;
+
+  
     if (texto === "") {
-
-        mensagem.innerHTML = '<span class="text-danger">Tarefa vazia!</span>';
-
-    } else {
-
-        const li = document.createElement("li");
-        li.classList.add("list-group-item", "d-flex", "justify-content-between");
-
-        li.textContent = texto;
-
-        const botaoRemover = document.createElement("button");
-
-        botaoRemover.textContent = "Remover";
-        botaoRemover.classList.add("btn", "btn-danger", "btn-sm");
-
-        botaoRemover.addEventListener("click", function () {
-            li.remove();
-        });
-
-        li.appendChild(botaoRemover);
-
-        lista.appendChild(li);
-
-        input.value = "";
-
-        mensagem.innerHTML = '<span class="text-success">Tarefa adicionada!</span>';
+        mensagem.innerText = "Digite uma tarefa!";
+        mensagem.className = "text-danger";
+        return;
     }
 
+  
+    let li = document.createElement("li");
+    li.className = "list-group-item d-flex justify-content-between align-items-center";
+
+    
+    li.innerText = texto;
+
+
+    let btnRemover = document.createElement("button");
+    btnRemover.innerText = "Remover";
+    btnRemover.className = "btn btn-danger btn-sm";
+
+  
+    btnRemover.addEventListener("click", () => {
+        li.remove();
+    });
+
+   
+    li.appendChild(btnRemover);
+
+
+    lista.appendChild(li);
+
+    input.value = "";
+
+    
+    mensagem.innerText = "Tarefa adicionada!";
+    mensagem.className = "text-success";
 });
